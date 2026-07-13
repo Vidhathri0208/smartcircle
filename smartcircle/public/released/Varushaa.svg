@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="100%" height="100%">
+      <defs>
+        
+        <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#0f172a" />
+          <stop offset="60%" stop-color="#020617" />
+          <stop offset="100%" stop-color="#1e1b4b" />
+        </linearGradient>
+      
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.9"/>
+        </filter>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="url(#bg)"/>
+      <rect x="10" y="10" width="280" height="430" fill="none" stroke="url(#bg)" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Poster Artwork Specifics -->
+      
+        <!-- Stars/Sparkles -->
+        <g opacity="0.5">
+          <path d="M 80,100 L 80,110 M 75,105 L 85,105" stroke="#38bdf8" stroke-width="1.5" />
+          <path d="M 220,150 L 220,160 M 215,155 L 225,155" stroke="#e0f2fe" stroke-width="1" />
+          <circle cx="50" cy="200" r="1.5" fill="#ffffff" />
+          <circle cx="260" cy="80" r="2" fill="#38bdf8" />
+        </g>
+        <!-- Majestic Landscape silhouette -->
+        <path d="M 0,380 Q 80,350 160,390 T 300,360 L 300,450 L 0,450 Z" fill="#060814" />
+        <!-- Three hero caped figures / family silhouette -->
+        <g transform="translate(150, 270)">
+          <!-- Center Figure -->
+          <path d="M -10,35 C -10,15 10,15 10,35 L 8,80 L -8,80 Z" fill="#020308"/>
+          <circle cx="0" cy="22" r="8" fill="#020308"/>
+          <!-- Cape overlay -->
+          <path d="M -10,35 L -18,75 L 0,70 L 18,75 L 10,35 Z" fill="#4338ca" opacity="0.3"/>
+        </g>
+      
+      
+      <!-- Frame border -->
+      <rect x="8" y="8" width="284" height="434" fill="none" stroke="#38BDF8" stroke-width="1.2" opacity="0.15" rx="6"/>
+      
+      <!-- Header Fine Text -->
+      <text x="50%" y="35" font-family="'Inter', sans-serif" font-weight="600" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="2">STAR CIRCLE PRESENTATION</text>
+      
+      <!-- Movie Title (Double layered for cinematic depth) -->
+      <g filter="url(#shadow)">
+        <text x="50%" y="152" font-family="'Georgia', 'Times New Roman', serif" font-weight="bold" font-size="28" fill="#000000" text-anchor="middle" letter-spacing="1.5" opacity="0.5">VARUSHAA</text>
+        <text x="50%" y="150" font-family="'Georgia', 'Times New Roman', serif" font-weight="bold" font-size="28" fill="#38BDF8" text-anchor="middle" letter-spacing="1.5">VARUSHAA</text>
+      </g>
+      
+      <!-- Footer Fine Text -->
+      <text x="50%" y="415" font-family="'Inter', sans-serif" font-weight="500" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="1.5">OFFICIAL PORTFOLIO SELECTION</text>
+      <text x="50%" y="425" font-family="'Inter', sans-serif" font-weight="600" font-size="6" fill="#38BDF8" opacity="0.7" text-anchor="middle" letter-spacing="2.5">RELEASED RELEASE</text>
+    </svg>

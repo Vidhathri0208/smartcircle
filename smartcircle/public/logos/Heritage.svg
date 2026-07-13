@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="100%" height="100%">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F5CD79" />
+          <stop offset="100%" stop-color="#C5A059" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="#FAF9F6"/>
+      <g transform="translate(155, 15)" stroke="url(#goldGrad)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <polygon points="10,40 30,20 65,20 75,30 75,65 65,65 65,50 45,50 45,65 35,65 35,45 10,45" />
+        <polygon points="10,40 0,30 -10,40 0,50" />
+        <polygon points="0,30 -10,20 -15,35 0,50" />
+        <path d="M -10,40 L -20,45 L -22,38 L -18,34" />
+        <path d="M 75,30 L 80,45" />
+        <line x1="30" y1="20" x2="35" y2="45" />
+        <line x1="65" y1="20" x2="45" y2="50" />
+        <line x1="10" y1="40" x2="35" y2="45" />
+      </g>
+      <text x="50%" y="142" font-family="'Georgia', serif" font-weight="700" font-size="24" fill="#B39252" text-anchor="middle" letter-spacing="6">HERITAGE</text>
+      <text x="50%" y="165" font-family="'Inter', sans-serif" font-weight="600" font-size="9" fill="#8C8A80" text-anchor="middle" letter-spacing="3">AESTHETIC LIFESTYLE &amp; HERITAGE</text>
+    </svg>

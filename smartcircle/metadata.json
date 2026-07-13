@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Remix: Star Circle Agency Website",
+  "description": "Premium multi-page interactive 3D website for Star Circle, a creative agency specializing in films, brands, and public figures.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

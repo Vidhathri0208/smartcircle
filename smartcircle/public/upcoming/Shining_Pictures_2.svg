@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="100%" height="100%">
+      <defs>
+        
+        <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#1f121b" />
+          <stop offset="70%" stop-color="#0e070c" />
+          <stop offset="100%" stop-color="#3b1d28" />
+        </linearGradient>
+      
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.9"/>
+        </filter>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="url(#bg)"/>
+      <rect x="10" y="10" width="280" height="430" fill="none" stroke="url(#bg)" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Poster Artwork Specifics -->
+      
+        <!-- Floating hearts/stars -->
+        <g opacity="0.4">
+          <path d="M 60,180 C 50,160 80,160 70,180 Z" fill="#f472b6" />
+          <path d="M 230,120 C 220,105 245,105 238,120 Z" fill="#ec4899" />
+          <circle cx="90" cy="110" r="1.5" fill="#ffffff" />
+          <circle cx="210" cy="220" r="2" fill="#f472b6" />
+        </g>
+        <!-- Romantic Sunset Hills -->
+        <path d="M 0,350 Q 100,320 200,360 Q 250,380 300,350 L 300,450 L 0,450 Z" fill="#1c0a13" />
+        <circle cx="220" cy="340" r="50" fill="#f472b6" opacity="0.15" />
+        <!-- Couple Silhouette -->
+        <g transform="translate(130, 260)">
+          <!-- Left figure (male) -->
+          <path d="M -15,40 C -15,15 -2,15 -2,40 L -2,90 L -18,90 Z" fill="#0a0307"/>
+          <circle cx="-9" cy="26" r="9" fill="#0a0307"/>
+          <!-- Right figure (female) -->
+          <path d="M 15,45 C 15,22 2,22 2,45 L 2,90 L 18,90 Z" fill="#0c0409"/>
+          <circle cx="9" cy="31" r="8.5" fill="#0c0409"/>
+          <!-- Leaning head contact -->
+          <path d="M -5,28 L 5,32" stroke="#0a0307" stroke-width="4" stroke-linecap="round"/>
+        </g>
+      
+      
+      <!-- Frame border -->
+      <rect x="8" y="8" width="284" height="434" fill="none" stroke="#F472B6" stroke-width="1.2" opacity="0.15" rx="6"/>
+      
+      <!-- Header Fine Text -->
+      <text x="50%" y="35" font-family="'Inter', sans-serif" font-weight="600" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="2">STAR CIRCLE PRESENTATION</text>
+      
+      <!-- Movie Title (Double layered for cinematic depth) -->
+      <g filter="url(#shadow)">
+        <text x="50%" y="152" font-family="'Georgia', serif" font-style="italic" font-weight="bold" font-size="28" fill="#000000" text-anchor="middle" letter-spacing="1.5" opacity="0.5">SHINING PICTURES 2</text>
+        <text x="50%" y="150" font-family="'Georgia', serif" font-style="italic" font-weight="bold" font-size="28" fill="#F472B6" text-anchor="middle" letter-spacing="1.5">SHINING PICTURES 2</text>
+      </g>
+      
+      <!-- Footer Fine Text -->
+      <text x="50%" y="415" font-family="'Inter', sans-serif" font-weight="500" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="1.5">OFFICIAL PORTFOLIO SELECTION</text>
+      <text x="50%" y="425" font-family="'Inter', sans-serif" font-weight="600" font-size="6" fill="#F472B6" opacity="0.7" text-anchor="middle" letter-spacing="2.5">UPCOMING RELEASE</text>
+    </svg>

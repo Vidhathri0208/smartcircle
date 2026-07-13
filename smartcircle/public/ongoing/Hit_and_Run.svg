@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="100%" height="100%">
+      <defs>
+        
+        <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#111115" />
+          <stop offset="60%" stop-color="#0b0a0c" />
+          <stop offset="100%" stop-color="#241203" />
+        </linearGradient>
+      
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.9"/>
+        </filter>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="url(#bg)"/>
+      <rect x="10" y="10" width="280" height="430" fill="none" stroke="url(#bg)" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Poster Artwork Specifics -->
+      
+        <!-- Fire Sparks / Dust -->
+        <g opacity="0.3">
+          <circle cx="50" cy="380" r="1.5" fill="#ff7700" />
+          <circle cx="120" cy="340" r="1" fill="#ffaa00" />
+          <circle cx="80" cy="290" r="2" fill="#ff5500" />
+          <circle cx="220" cy="350" r="1" fill="#ffaa00" />
+          <circle cx="260" cy="310" r="2.5" fill="#ff4400" />
+          <circle cx="170" cy="270" r="1.5" fill="#ff8800" />
+          <circle cx="280" cy="250" r="1" fill="#ffaa00" />
+        </g>
+        <!-- Fiery horizon silhouette -->
+        <path d="M 0,400 Q 75,370 150,390 Q 225,410 300,380 L 300,450 L 0,450 Z" fill="#1e0e03" opacity="0.8"/>
+        <path d="M 0,410 Q 90,390 180,415 Q 250,395 300,420 L 300,450 L 0,450 Z" fill="#0d0400" />
+        <!-- Warrior/Hero silhouette -->
+        <g transform="translate(150, 230)">
+          <path d="M -10,60 L 10,60 L 12,120 L -12,120 Z" fill="#050201"/> <!-- Legs/base -->
+          <path d="M -15,40 C -15,10 15,10 15,40 L 12,65 L -12,65 Z" fill="#0d0502" /> <!-- Torso -->
+          <circle cx="0" cy="25" r="12" fill="#050201" /> <!-- Head -->
+          <path d="M 12,35 L 35,15 L 40,20 L 15,45 Z" fill="#050201" /> <!-- Arm holding weapon -->
+          <path d="M 33,10 L 45,-15 L 48,-12 L 36,13 Z" fill="#ff7700" opacity="0.9"/> <!-- Glowing weapon/sword blade -->
+        </g>
+      
+      
+      <!-- Frame border -->
+      <rect x="8" y="8" width="284" height="434" fill="none" stroke="#F59E0B" stroke-width="1.2" opacity="0.15" rx="6"/>
+      
+      <!-- Header Fine Text -->
+      <text x="50%" y="35" font-family="'Inter', sans-serif" font-weight="600" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="2">STAR CIRCLE PRESENTATION</text>
+      
+      <!-- Movie Title (Double layered for cinematic depth) -->
+      <g filter="url(#shadow)">
+        <text x="50%" y="152" font-family="'Impact', 'Arial Black', sans-serif" font-weight="bold" font-size="28" fill="#000000" text-anchor="middle" letter-spacing="1.5" opacity="0.5">HIT AND RUN</text>
+        <text x="50%" y="150" font-family="'Impact', 'Arial Black', sans-serif" font-weight="bold" font-size="28" fill="#F59E0B" text-anchor="middle" letter-spacing="1.5">HIT AND RUN</text>
+      </g>
+      
+      <!-- Footer Fine Text -->
+      <text x="50%" y="415" font-family="'Inter', sans-serif" font-weight="500" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="1.5">OFFICIAL PORTFOLIO SELECTION</text>
+      <text x="50%" y="425" font-family="'Inter', sans-serif" font-weight="600" font-size="6" fill="#F59E0B" opacity="0.7" text-anchor="middle" letter-spacing="2.5">ONGOING RELEASE</text>
+    </svg>

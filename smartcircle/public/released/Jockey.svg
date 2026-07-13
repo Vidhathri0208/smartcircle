@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="100%" height="100%">
+      <defs>
+        
+        <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#06120e" />
+          <stop offset="70%" stop-color="#020504" />
+          <stop offset="100%" stop-color="#0f1f1a" />
+        </linearGradient>
+      
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.9"/>
+        </filter>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="url(#bg)"/>
+      <rect x="10" y="10" width="280" height="430" fill="none" stroke="url(#bg)" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Poster Artwork Specifics -->
+      
+        <!-- Ancient emerald dust -->
+        <g opacity="0.3">
+          <circle cx="100" cy="150" r="2" fill="#059669" />
+          <circle cx="210" cy="230" r="1.5" fill="#34d399" />
+          <circle cx="70" cy="280" r="2.5" fill="#059669" />
+          <circle cx="250" cy="120" r="1.5" fill="#34d399" />
+        </g>
+        <!-- Ancient temple pillar silhouettes in margin -->
+        <rect x="0" y="100" width="25" height="350" fill="#010302" />
+        <rect x="275" y="100" width="25" height="350" fill="#010302" />
+        <path d="M 0,390 L 300,390 L 300,450 L 0,450 Z" fill="#020504"/>
+        <!-- Mysterious Shield Crest -->
+        <g transform="translate(150, 220)">
+          <path d="M -35,-35 L 35,-35 C 35,-35 35,15 0,45 C -35,15 -35,-35 -35,-35 Z" fill="none" stroke="#059669" stroke-width="2.5"/>
+          <path d="M -30,-30 L 30,-30 C 30,-30 30,10 0,38 C -30,10 -30,-30 -30,-30 Z" fill="none" stroke="#D1FAE5" stroke-width="0.75" stroke-dasharray="4,2"/>
+          <polygon points="0,-18 5,-5 18,-5 8,3 12,15 0,7 -12,15 -8,3 -18,-5 -5,-5" fill="#34d399" opacity="0.8" />
+        </g>
+      
+      
+      <!-- Frame border -->
+      <rect x="8" y="8" width="284" height="434" fill="none" stroke="#34D399" stroke-width="1.2" opacity="0.15" rx="6"/>
+      
+      <!-- Header Fine Text -->
+      <text x="50%" y="35" font-family="'Inter', sans-serif" font-weight="600" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="2">STAR CIRCLE PRESENTATION</text>
+      
+      <!-- Movie Title (Double layered for cinematic depth) -->
+      <g filter="url(#shadow)">
+        <text x="50%" y="152" font-family="'Georgia', 'Times New Roman', serif" font-weight="900" font-size="28" fill="#000000" text-anchor="middle" letter-spacing="1.5" opacity="0.5">JOCKEY</text>
+        <text x="50%" y="150" font-family="'Georgia', 'Times New Roman', serif" font-weight="900" font-size="28" fill="#34D399" text-anchor="middle" letter-spacing="1.5">JOCKEY</text>
+      </g>
+      
+      <!-- Footer Fine Text -->
+      <text x="50%" y="415" font-family="'Inter', sans-serif" font-weight="500" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="1.5">OFFICIAL PORTFOLIO SELECTION</text>
+      <text x="50%" y="425" font-family="'Inter', sans-serif" font-weight="600" font-size="6" fill="#34D399" opacity="0.7" text-anchor="middle" letter-spacing="2.5">RELEASED RELEASE</text>
+    </svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" width="100%" height="100%">
+      <defs>
+        
+        <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#1e1b15" />
+          <stop offset="60%" stop-color="#0e0c08" />
+          <stop offset="100%" stop-color="#3a2f16" />
+        </linearGradient>
+      
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.9"/>
+        </filter>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="100%" height="100%" fill="url(#bg)"/>
+      <rect x="10" y="10" width="280" height="430" fill="none" stroke="url(#bg)" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Poster Artwork Specifics -->
+      
+        <!-- High energy particles -->
+        <g opacity="0.4">
+          <circle cx="60" cy="120" r="3" fill="#facc15" />
+          <circle cx="240" cy="180" r="2" fill="#fb923c" />
+          <circle cx="110" cy="240" r="4" fill="#facc15" opacity="0.2" />
+          <path d="M 180,100 L 190,100 L 185,110 Z" fill="#fb923c" />
+        </g>
+        <!-- City Skyline / Ground silhouette -->
+        <path d="M 0,370 L 30,370 L 30,340 L 60,340 L 60,360 L 100,360 L 100,330 L 140,330 L 140,375 L 180,375 L 180,350 L 220,350 L 220,380 L 300,380 L 300,450 L 0,450 Z" fill="#0c0a06" opacity="0.9"/>
+        <!-- Youth Character silhouette -->
+        <g transform="translate(150, 250)">
+          <!-- Character holding a prop -->
+          <path d="M -10,30 C -10,10 10,10 10,30 L 12,100 L -12,100 Z" fill="#050402" />
+          <circle cx="0" cy="15" r="9" fill="#050402" />
+          <!-- arm up -->
+          <path d="M 10,30 L 28,10 L 33,14 L 10,40 Z" fill="#050402" />
+          <circle cx="28" cy="10" r="3" fill="#fb923c" />
+        </g>
+      
+      
+      <!-- Frame border -->
+      <rect x="8" y="8" width="284" height="434" fill="none" stroke="#FACC15" stroke-width="1.2" opacity="0.15" rx="6"/>
+      
+      <!-- Header Fine Text -->
+      <text x="50%" y="35" font-family="'Inter', sans-serif" font-weight="600" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="2">STAR CIRCLE PRESENTATION</text>
+      
+      <!-- Movie Title (Double layered for cinematic depth) -->
+      <g filter="url(#shadow)">
+        <text x="50%" y="152" font-family="'Inter', sans-serif" font-weight="900" font-size="28" fill="#000000" text-anchor="middle" letter-spacing="1.5" opacity="0.5">OM SHANTI SHANTI SHANTHIHI</text>
+        <text x="50%" y="150" font-family="'Inter', sans-serif" font-weight="900" font-size="28" fill="#FACC15" text-anchor="middle" letter-spacing="1.5">OM SHANTI SHANTI SHANTHIHI</text>
+      </g>
+      
+      <!-- Footer Fine Text -->
+      <text x="50%" y="415" font-family="'Inter', sans-serif" font-weight="500" font-size="7" fill="#ffffff" opacity="0.4" text-anchor="middle" letter-spacing="1.5">OFFICIAL PORTFOLIO SELECTION</text>
+      <text x="50%" y="425" font-family="'Inter', sans-serif" font-weight="600" font-size="6" fill="#FACC15" opacity="0.7" text-anchor="middle" letter-spacing="2.5">RELEASED RELEASE</text>
+    </svg>
