@@ -62,11 +62,11 @@ export default function Navigation({ currentPath, onNavigate }: NavigationProps)
           onClick={() => handleLinkClick('home')}
           className="flex items-center cursor-pointer group"
         >
-          <div className="w-16 h-16 overflow-hidden flex items-center justify-center relative shrink-0">
+          <div className="w-16 h-16 flex items-center justify-center relative shrink-0">
             <img
-              src="/SC-LOGO-png.png"
+              src="/SC-LOGO-PSD-copy.png"
               alt="Smart Circle Logo"
-              className="w-full h-full object-contain scale-[2.2] transition-all duration-500 group-hover:scale-[2.4]"
+              className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
             />
           </div>
         </div>

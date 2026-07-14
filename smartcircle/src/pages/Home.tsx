@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown, ArrowUpRight, Film, Radio, Star, Video, Play, Sparkles, Trophy, Users, Globe2, FilmIcon, Instagram } from 'lucide-react';
 import ThreeCanvas from '../components/ThreeCanvas';
@@ -49,6 +49,95 @@ function AnimatedCounter({ target, suffix = '', label }: { target: number; suffi
 export default function Home({ onNavigate }: HomeProps) {
   const [failedLogos, setFailedLogos] = useState<Record<number, boolean>>({});
 
+  const movieScrollRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const isHoveredRef = useRef(false);
+
+  const handleMovieScroll = () => {
+    const container = movieScrollRef.current;
+    if (!container) return;
+
+    const singleSetWidth = container.scrollWidth / 3;
+    
+    // Loop boundary checks
+    if (container.scrollLeft >= singleSetWidth * 2) {
+      container.scrollLeft -= singleSetWidth;
+    } else if (container.scrollLeft <= 0) {
+      container.scrollLeft += singleSetWidth;
+    }
+  };
+
+  const handleMovieMouseDown = (e: React.MouseEvent) => {
+    const container = movieScrollRef.current;
+    if (!container) return;
+    isDraggingRef.current = true;
+    startXRef.current = e.pageX - container.offsetLeft;
+    scrollLeftRef.current = container.scrollLeft;
+  };
+
+  const handleMovieMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingRef.current) return;
+    e.preventDefault();
+    const container = movieScrollRef.current;
+    if (!container) return;
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startXRef.current) * 1.5; // multiplier for scroll speed
+    container.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  const handleMovieMouseUpOrLeave = () => {
+    isDraggingRef.current = false;
+    isHoveredRef.current = false;
+  };
+
+  const handleMovieMouseEnter = () => {
+    isHoveredRef.current = true;
+  };
+
+  useEffect(() => {
+    const container = movieScrollRef.current;
+    if (!container) return;
+
+    let animationFrameId: number;
+    const speed = 0.8; // Speed of auto-scrolling in pixels per frame
+
+    const autoScroll = () => {
+      if (!isHoveredRef.current && !isDraggingRef.current) {
+        container.scrollLeft += speed;
+        
+        const singleSetWidth = container.scrollWidth / 3;
+        if (container.scrollLeft >= singleSetWidth * 2) {
+          container.scrollLeft -= singleSetWidth;
+        } else if (container.scrollLeft <= 0) {
+          container.scrollLeft += singleSetWidth;
+        }
+      }
+      
+      animationFrameId = requestAnimationFrame(autoScroll);
+    };
+
+    // Initially position at the middle set to support left/right scrolling seamlessly
+    const initializeScroll = () => {
+      if (container.scrollWidth > 0) {
+        const singleSetWidth = container.scrollWidth / 3;
+        container.scrollLeft = singleSetWidth;
+      } else {
+        // Retry if layout not completed yet
+        setTimeout(initializeScroll, 50);
+      }
+    };
+    
+    initializeScroll();
+
+    animationFrameId = requestAnimationFrame(autoScroll);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
   const brandLogos = [
     { name: 'Ulavacharu', tagline: 'Originally Original Cuisine', path: '/logos/Ulavacharu.svg', subtitle: 'Originally Original Cuisine' },
     { name: 'Traul', tagline: 'Smart Tech Ecosystem', path: '/logos/Traul.svg', subtitle: 'Tech/App Brand' },
@@ -79,35 +168,35 @@ export default function Home({ onNavigate }: HomeProps) {
       title: 'Movie PR & Marketing',
       description: 'Pre-production, scripting hype, high-fidelity VFX curation, and targeted streaming launch events.',
       icon: Film,
-      color: 'border-amber-400/20 hover:border-amber-400/80 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)] bg-radial-gradient from-amber-400/5 via-transparent to-transparent'
+      color: 'border-amber-400/70 shadow-[0_0_20px_rgba(245,158,11,0.1)] bg-radial-gradient from-amber-400/10 via-transparent to-transparent hover:border-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.25)] hover:scale-[1.02]'
     },
     {
       id: 'brand-marketing',
       title: 'Brand Marketing',
       description: 'Lead generation engines, brand blueprinted style architectures, and performance social systems.',
       icon: Radio,
-      color: 'border-blue-500/20 hover:border-blue-500/80 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] bg-radial-gradient from-blue-500/5 via-transparent to-transparent'
+      color: 'border-blue-500/70 shadow-[0_0_20px_rgba(59,130,246,0.1)] bg-radial-gradient from-blue-500/10 via-transparent to-transparent hover:border-blue-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.25)] hover:scale-[1.02]'
     },
     {
       id: 'celebrity-pr',
       title: 'Celebrity PR & Reps',
       description: 'Verified media status verification, elite press publications, and split-second crisis containment.',
       icon: Star,
-      color: 'border-zinc-400/20 hover:border-zinc-400/80 hover:shadow-[0_0_20px_rgba(250,250,250,0.15)] bg-radial-gradient from-zinc-400/5 via-transparent to-transparent'
+      color: 'border-zinc-400/70 shadow-[0_0_20px_rgba(250,250,250,0.1)] bg-radial-gradient from-zinc-400/10 via-transparent to-transparent hover:border-white/80 hover:shadow-[0_0_30px_rgba(250,250,250,0.25)] hover:scale-[1.02]'
     },
     {
       id: 'creative-production',
       title: 'Creative Production',
       description: 'Rhythmic editing structures, premium vector design icons, and animated title micro-graphics.',
       icon: Video,
-      color: 'border-pink-500/20 hover:border-pink-500/80 hover:shadow-[0_0_20px_rgba(236,72,153,0.15)] bg-radial-gradient from-pink-500/5 via-transparent to-transparent'
+      color: 'border-pink-500/70 shadow-[0_0_20px_rgba(236,72,153,0.1)] bg-radial-gradient from-pink-500/10 via-transparent to-transparent hover:border-pink-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.25)] hover:scale-[1.02]'
     },
     {
       id: 'youtube-management',
       title: 'YouTube Scaling Strategy',
       description: 'CTR thumbnail design optimization, algorithmic tag maps, and audience hook management.',
       icon: Play,
-      color: 'border-red-500/20 hover:border-red-500/80 hover:shadow-[0_0_20px_rgba(239,68,68,0.15)] bg-radial-gradient from-red-500/5 via-transparent to-transparent'
+      color: 'border-red-500/70 shadow-[0_0_20px_rgba(239,68,68,0.1)] bg-radial-gradient from-red-500/10 via-transparent to-transparent hover:border-red-500 hover:shadow-[0_0_30px_rgba(239,68,68,0.25)] hover:scale-[1.02]'
     }
   ];
 
@@ -290,13 +379,13 @@ export default function Home({ onNavigate }: HomeProps) {
                       <h3 className="font-sans font-bold text-lg text-white group-hover:text-amber-500 transition-colors">
                         {serv.title}
                       </h3>
-                      <p className="font-sans text-white/40 text-xs tracking-wide leading-relaxed">
+                      <p className="font-sans text-white/60 group-hover:text-white/95 transition-colors text-xs tracking-wide leading-relaxed">
                         {serv.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-mono text-zinc-500 pt-4 border-t border-white/5 opacity-60 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center justify-between text-xs font-mono text-zinc-500 pt-4 border-t border-white/5 opacity-80 group-hover:opacity-100 transition-opacity">
                     <span>0{index + 1} • SERVICE</span>
                     <span className="flex items-center space-x-1 hover:text-amber-500 transition-colors">
                       <span>EXPLORE</span>
@@ -308,13 +397,13 @@ export default function Home({ onNavigate }: HomeProps) {
             })}
 
             {/* Extra Bento CTA Block */}
-            <div className="md:col-span-2 lg:col-span-1 bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 flex flex-col justify-between select-none">
+            <div className="md:col-span-2 lg:col-span-1 bg-[#0a0a0a] border border-amber-500/40 rounded-2xl p-8 flex flex-col justify-between select-none shadow-[0_0_20px_rgba(245,158,11,0.05)] hover:border-amber-500/80 hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] hover:scale-[1.02] transition-all duration-500">
               <div className="space-y-4">
                 <Sparkles className="w-6 h-6 text-amber-500" />
                 <h3 className="font-sans font-bold text-lg text-white">
                   Tailored Strategic Packages
                 </h3>
-                <p className="text-white/40 text-xs tracking-wide leading-relaxed">
+                <p className="text-white/60 text-xs tracking-wide leading-relaxed">
                   Have a multi-variable campaign involving casting, cinematic reels, verified reputation management, and dynamic YouTube distribution? We provide comprehensive ecosystem architecture.
                 </p>
               </div>
@@ -360,45 +449,58 @@ export default function Home({ onNavigate }: HomeProps) {
             </p>
           </div>
 
-          <div className="relative flex overflow-x-hidden group py-4 w-full" id="movie-horizontal-scroll">
-            <div className="animate-marquee flex whitespace-nowrap items-center">
-              {[
-                { path: '/released/SHAMBHALA.jpg', name: 'Shambhala', status: 'Released' },
-                { path: '/released/Nari-Nari-Naduma-Murari_Poster-98401310-dfeb-11f0-8da9-a572f945d604.jpg', name: 'Nari Nari Naduma Murari', status: 'Released' },
-                { path: '/released/OM%20SHANTI%20SHANTIHI.jpg', name: 'Om Shanti Shantihi', status: 'Released' },
-                { path: '/released/VANDA%20DEVULLU.jpg', name: 'Vanda Devullu', status: 'Released' },
-                { path: '/ongoing/ANUMANA%20PAKSHI.jpg', name: 'Anumana Pakshi', status: 'Ongoing' },
-                { path: '/upcoming/SK33.jpg', name: 'SK 33', status: 'Upcoming' },
-                { path: '/upcoming/AADI%202.jpg', name: 'Shining Pictures 2', status: 'Upcoming' },
-                { path: '/upcoming/DAVID%20REDDY.jpg', name: 'Speed — David Reddy', status: 'Upcoming' },
-                { path: '/upcoming/VADDI%20KASULA%20VADA.jpg', name: 'Veera Kasulavada', status: 'Upcoming' },
-                { path: '/upcoming/ENE_2x1.jpg.jpeg', name: 'Repert', status: 'Upcoming' },
-                { path: '/released/SHAMBHALA.jpg', name: 'Shambhala', status: 'Released' },
-                { path: '/released/Nari-Nari-Naduma-Murari_Poster-98401310-dfeb-11f0-8da9-a572f945d604.jpg', name: 'Nari Nari Naduma Murari', status: 'Released' },
-                { path: '/released/OM%20SHANTI%20SHANTIHI.jpg', name: 'Om Shanti Shantihi', status: 'Released' },
-                { path: '/released/VANDA%20DEVULLU.jpg', name: 'Vanda Devullu', status: 'Released' },
-                { path: '/ongoing/ANUMANA%20PAKSHI.jpg', name: 'Anumana Pakshi', status: 'Ongoing' },
-                { path: '/upcoming/SK33.jpg', name: 'SK 33', status: 'Upcoming' },
-                { path: '/upcoming/AADI%202.jpg', name: 'Shining Pictures 2', status: 'Upcoming' },
-                { path: '/upcoming/DAVID%20REDDY.jpg', name: 'Speed — David Reddy', status: 'Upcoming' },
-                { path: '/upcoming/VADDI%20KASULA%20VADA.jpg', name: 'Veera Kasulavada', status: 'Upcoming' },
-                { path: '/upcoming/ENE_2x1.jpg.jpeg', name: 'Repert', status: 'Upcoming' },
-                { path: '/released/SHAMBHALA.jpg', name: 'Shambhala', status: 'Released' },
-                { path: '/released/Nari-Nari-Naduma-Murari_Poster-98401310-dfeb-11f0-8da9-a572f945d604.jpg', name: 'Nari Nari Naduma Murari', status: 'Released' },
-                { path: '/released/OM%20SHANTI%20SHANTIHI.jpg', name: 'Om Shanti Shantihi', status: 'Released' },
-                { path: '/released/VANDA%20DEVULLU.jpg', name: 'Vanda Devullu', status: 'Released' },
-                { path: '/ongoing/ANUMANA%20PAKSHI.jpg', name: 'Anumana Pakshi', status: 'Ongoing' },
-                { path: '/upcoming/SK33.jpg', name: 'SK 33', status: 'Upcoming' },
-                { path: '/upcoming/AADI%202.jpg', name: 'Shining Pictures 2', status: 'Upcoming' },
-                { path: '/upcoming/DAVID%20REDDY.jpg', name: 'Speed — David Reddy', status: 'Upcoming' },
-                { path: '/upcoming/VADDI%20KASULA%20VADA.jpg', name: 'Veera Kasulavada', status: 'Upcoming' },
-                { path: '/upcoming/ENE_2x1.jpg.jpeg', name: 'Repert', status: 'Upcoming' }
-              ].map((movie, index) => (
-                <div key={index} className="group/movie relative flex-shrink-0 bg-[#0a0a0a] border border-white/10 rounded-2xl w-48 mx-4 h-72 hover:border-amber-500/50 hover:shadow-[0_8px_30px_rgba(245,158,11,0.15)] transition-all duration-500 overflow-hidden flex flex-col items-center justify-center">
+          <div
+            ref={movieScrollRef}
+            className="relative flex overflow-x-auto scrollbar-hide py-4 w-full select-none cursor-grab active:cursor-grabbing items-center"
+            id="movie-horizontal-scroll"
+            onScroll={handleMovieScroll}
+            onMouseDown={handleMovieMouseDown}
+            onMouseMove={handleMovieMouseMove}
+            onMouseUp={handleMovieMouseUpOrLeave}
+            onMouseLeave={handleMovieMouseUpOrLeave}
+            onMouseEnter={handleMovieMouseEnter}
+          >
+            {[
+              { path: '/released/SHAMBHALA.jpg', name: 'Shambhala', status: 'Released' },
+              { path: '/released/Nari-Nari-Naduma-Murari_Poster-98401310-dfeb-11f0-8da9-a572f945d604.jpg', name: 'Nari Nari Naduma Murari', status: 'Released' },
+              { path: '/released/OM%20SHANTI%20SHANTIHI.jpg', name: 'Om Shanti Shantihi', status: 'Released' },
+              { path: '/released/VANDA%20DEVULLU.jpg', name: 'Vanda Devullu', status: 'Released' },
+              { path: '/ongoing/ANUMANA%20PAKSHI.jpg', name: 'Anumana Pakshi', status: 'Ongoing' },
+              { path: '/upcoming/SK33.jpg', name: 'SK 33', status: 'Upcoming' },
+              { path: '/upcoming/AADI%202.jpg', name: 'Shining Pictures 2', status: 'Upcoming' },
+              { path: '/upcoming/DAVID%20REDDY.jpg', name: 'Speed — David Reddy', status: 'Upcoming' },
+              { path: '/upcoming/VADDI%20KASULA%20VADA.jpg', name: 'Veera Kasulavada', status: 'Upcoming' },
+              { path: '/upcoming/ENE_2x1.jpg.jpeg', name: 'Repert', status: 'Upcoming' },
+              { path: '/released/SHAMBHALA.jpg', name: 'Shambhala', status: 'Released' },
+              { path: '/released/Nari-Nari-Naduma-Murari_Poster-98401310-dfeb-11f0-8da9-a572f945d604.jpg', name: 'Nari Nari Naduma Murari', status: 'Released' },
+              { path: '/released/OM%20SHANTI%20SHANTIHI.jpg', name: 'Om Shanti Shantihi', status: 'Released' },
+              { path: '/released/VANDA%20DEVULLU.jpg', name: 'Vanda Devullu', status: 'Released' },
+              { path: '/ongoing/ANUMANA%20PAKSHI.jpg', name: 'Anumana Pakshi', status: 'Ongoing' },
+              { path: '/upcoming/SK33.jpg', name: 'SK 33', status: 'Upcoming' },
+              { path: '/upcoming/AADI%202.jpg', name: 'Shining Pictures 2', status: 'Upcoming' },
+              { path: '/upcoming/DAVID%20REDDY.jpg', name: 'Speed — David Reddy', status: 'Upcoming' },
+              { path: '/upcoming/VADDI%20KASULA%20VADA.jpg', name: 'Veera Kasulavada', status: 'Upcoming' },
+              { path: '/upcoming/ENE_2x1.jpg.jpeg', name: 'Repert', status: 'Upcoming' },
+              { path: '/released/SHAMBHALA.jpg', name: 'Shambhala', status: 'Released' },
+              { path: '/released/Nari-Nari-Naduma-Murari_Poster-98401310-dfeb-11f0-8da9-a572f945d604.jpg', name: 'Nari Nari Naduma Murari', status: 'Released' },
+              { path: '/released/OM%20SHANTI%20SHANTIHI.jpg', name: 'Om Shanti Shantihi', status: 'Released' },
+              { path: '/released/VANDA%20DEVULLU.jpg', name: 'Vanda Devullu', status: 'Released' },
+              { path: '/ongoing/ANUMANA%20PAKSHI.jpg', name: 'Anumana Pakshi', status: 'Ongoing' },
+              { path: '/upcoming/SK33.jpg', name: 'SK 33', status: 'Upcoming' },
+              { path: '/upcoming/AADI%202.jpg', name: 'Shining Pictures 2', status: 'Upcoming' },
+              { path: '/upcoming/DAVID%20REDDY.jpg', name: 'Speed — David Reddy', status: 'Upcoming' },
+              { path: '/upcoming/VADDI%20KASULA%20VADA.jpg', name: 'Veera Kasulavada', status: 'Upcoming' },
+              { path: '/upcoming/ENE_2x1.jpg.jpeg', name: 'Repert', status: 'Upcoming' }
+            ].map((movie, index) => {
+              return (
+                <div
+                  key={index}
+                  className="group/movie relative flex-shrink-0 bg-[#0a0a0a] rounded-2xl w-48 mx-4 h-72 border border-amber-500/80 scale-105 shadow-[0_8px_30px_rgba(245,158,11,0.25)] z-20 transition-all duration-500 overflow-hidden flex flex-col items-center justify-center hover:border-amber-400 hover:shadow-[0_8px_30px_rgba(245,158,11,0.4)] hover:scale-110"
+                >
                    <img
                       src={movie.path}
                       alt={movie.name}
-                      className="absolute inset-0 w-full h-full object-cover filter opacity-40 group-hover/movie:opacity-100 group-hover/movie:scale-105 transition-all duration-700"
+                      className="absolute inset-0 w-full h-full object-cover filter transition-all duration-700 opacity-100 scale-105 group-hover/movie:scale-110"
                       referrerPolicy="no-referrer"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -412,18 +514,18 @@ export default function Home({ onNavigate }: HomeProps) {
                         }
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none opacity-80 group-hover/movie:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none opacity-80 group-hover/movie:opacity-90 transition-opacity duration-500" />
                     <div className="absolute top-3 right-3 bg-black/80 backdrop-blur-md border border-white/10 px-2 py-1 rounded text-[9px] font-mono uppercase tracking-widest text-amber-500 z-10">
                       {movie.status}
                     </div>
-                    <div className="absolute bottom-4 inset-x-4 z-10 text-center translate-y-2 opacity-0 group-hover/movie:translate-y-0 group-hover/movie:opacity-100 transition-all duration-500">
+                    <div className="absolute bottom-4 inset-x-4 z-10 text-center transition-all duration-500 translate-y-0 opacity-100">
                       <span className="font-sans font-bold text-white text-sm tracking-widest uppercase whitespace-normal block">
                         {movie.name}
                       </span>
                     </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>

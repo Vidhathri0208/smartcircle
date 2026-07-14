@@ -38,11 +38,11 @@ export default function Footer({ onNavigate }: FooterProps) {
           {/* BRAND */}
           <div className="space-y-6">
             <div onClick={() => handleLink('home')} className="flex items-center cursor-pointer group w-fit">
-              <div className="w-16 h-16 overflow-hidden flex items-center justify-center relative shrink-0">
+              <div className="w-16 h-16 flex items-center justify-center relative shrink-0">
                 <img
-                  src="/SC-LOGO-png.png"
+                  src="/SC-LOGO-PSD-copy.png"
                   alt="Smart Circle Logo"
-                  className="w-full h-full object-contain scale-[2.2] transition-all duration-500 group-hover:scale-[2.4]"
+                  className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -155,14 +155,12 @@ export default function Footer({ onNavigate }: FooterProps) {
 
         <div className="pt-10 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-500 font-mono tracking-wider gap-4">
           <div>
-            © 2026 Star Circle Private Limited. All rights reserved.
+            © 2026 Star Circle Pvt. Ltd. All rights reserved. | Developed by Vollywide Media & Advertising Pvt. Ltd.
           </div>
           <div className="flex space-x-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Charter</a>
             <span>•</span>
             <a href="#" className="hover:text-white transition-colors">Directives Protocol</a>
-            <span>•</span>
-            <span className="text-amber-500">https://thestarcircle.com</span>
           </div>
         </div>
       </div>
